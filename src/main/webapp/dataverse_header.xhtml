@@ -111,10 +111,11 @@
                                 </h:outputLink>
                             </li>
                         </ui:fragment>
-                        <h:form>                            
-                            <h:commandButton action="#{language.changeLanguage('')}" value="en"   />                            
-                             <h:outputText value="&#160;" />                           
-                            <h:commandButton action="#{language.changeLanguage('fr')}" value="fr"   />                            
+                        <h:form id="language_toggle">                            
+                            <h:commandLink action="#{language.changeLanguage('')}" value="English" rendered="#{language.getLocale() =='fr'}"  />                            
+                                                       
+                            <h:commandLink action="#{language.changeLanguage('fr')}" value="Français"  rendered="#{language.getLocale() !='fr'}"/>  
+                                    
                         </h:form>
                         <ui:fragment rendered="#{dataverseSession.user.authenticated}">
                             <li class="dropdown accountName">
@@ -274,8 +275,8 @@
 	                    <div class="row">
 	                        <div class="float_left" id="institutional_dataverse">
 	                        </div>
-	                        <div class="float_right"><img src="/resources/images/slogan_1.png" class="slogan1"/>
-	                            <p id="cta-area"><a class="but_link but_link_lg" id="create-my-space" href="dataverse.xhtml?ownerId=1" role="button">Create My Dataverse</a><span class="or-text">or</span><a class="or-link" href="dataverse.xhtml"><span style="margin-right: 5px;" class="glyphicon glyphicon-list" aria-hidden="true"></span>Explore</a></p>
+	                        <div class="float_right"><img src="/resources/images/#{bundle['header.about']}" class="slogan1"/>
+	                            <p id="cta-area"><a class="but_link but_link_lg" id="create-my-space" href="dataverse.xhtml?ownerId=1" role="button">#{bundle['dataverse.banner.create']}</a><span class="or-text">#{bundle['dataverse.banner.or']}</span><a class="or-link" href="dataverse.xhtml"><span style="margin-right: 5px;" class="glyphicon glyphicon-list" aria-hidden="true"></span>#{bundle['dataverse.banner.explore']}</a></p>
 	                        </div>
 	                    </div>
 	                </div>
